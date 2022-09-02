@@ -1,0 +1,5 @@
+ul{
+    background: blue;
+}
+li{color:gold; font-weight: bold}
+li:has(p){color:red; font-size:100px}

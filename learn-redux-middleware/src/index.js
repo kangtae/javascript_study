@@ -7,8 +7,9 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware} from "redux";
 import rootReducer from "./modules";
 import logger from "redux-logger"
+import ReduxThunk from "redux-thunk"
 import {composeWithDevTools} from "redux-devtools-extension"
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(logger)));
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(ReduxThunk, logger)));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

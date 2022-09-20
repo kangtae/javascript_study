@@ -14,7 +14,7 @@ export const getPosts = createPromiseThunk(GET_POSTS, postsApi.getPosts);
 export const getPost = createPromiseThunk(GET_POSTS, postsApi.getPostsById);
 
 
-//리듀서 영억
+//리듀서 영억 야근중
 const initialState = {
 	posts: reducerUtils.initial(),
 	post: reducerUtils.initial()

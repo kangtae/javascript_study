@@ -14,7 +14,7 @@ export const getPosts = createPromiseThunk(GET_POSTS, postsApi.getPosts);
 export const getPost = createPromiseThunk(GET_POSTS, postsApi.getPostsById);
 
 
-//리듀서 초기화
+//리듀서 초기화 사가 어렵다
 const initialState = {
 	posts: reducerUtils.initial(),
 	post: reducerUtils.initial()

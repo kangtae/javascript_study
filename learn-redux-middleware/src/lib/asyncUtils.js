@@ -20,6 +20,7 @@ export const createPromiseThunk = (type, promiseCreator) =>{
 }
 
 export const handleAsyncActions = (type, key) => {
+	console.log("type",type)
 	const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
 	return (state, action) => {
 		switch (action.type) {

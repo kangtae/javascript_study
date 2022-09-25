@@ -9,15 +9,17 @@ import rootReducer from "./modules";
 import logger from "redux-logger"
 import ReduxThunk from "redux-thunk"
 import {composeWithDevTools} from "redux-devtools-extension"
+import {BrowserRouter} from "react-router-dom";
+
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(ReduxThunk, logger)));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <BrowserRouter>
 		<Provider store={store}>
 			<App />
 		</Provider>
-  </React.StrictMode>
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -11,8 +11,7 @@ const GET_POST_ERROR = "GET_POST_ERROR";
 
 export const getPosts = createPromiseThunk(GET_POSTS, postsApi.getPosts);
 
-export const getPost = createPromiseThunk(GET_POSTS, postsApi.getPostsById);
-
+export const getPost = createPromiseThunk(GET_POST, postsApi.getPostsById);
 
 //리듀서 초기화
 const initialState = {

@@ -28,7 +28,7 @@ export const getPost = id => async dispatch => {
 }
 export const clearPost = () => ({ type: CLEAR_POST})
 
-//리듀서 초기화11
+//리듀서 초기화1222
 const initialState = {
 	posts: reducerUtils.initial(),
 	post: {}

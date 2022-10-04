@@ -1,5 +1,11 @@
 import * as postsApi from "../api/posts";
-import {createPromiseThunk, handleAsyncActions, reducerUtils} from "../lib/asyncUtils";
+import {
+	createPromiseThunk,
+	createPromiseThunkById,
+	handleAsyncActions,
+	handleAsyncActionsById,
+	reducerUtils
+} from "../lib/asyncUtils";
 
 const GET_POSTS = "GET_POSTS";
 const GET_POSTS_SUCCESS = "GET_POSTS_SUCCESS";
@@ -11,21 +17,7 @@ const GET_POST_ERROR = "GET_POST_ERROR";
 const CLEAR_POST = "CLEAR_POST";
 
 export const getPosts = createPromiseThunk(GET_POSTS, postsApi.getPosts);
-export const getPost = id => async dispatch => {
-	dispatch({type: GET_POST, meta : id});
-	try{
-		const payload = await postsApi.getPostsById(id);
-		dispatch( { type: GET_POST_SUCCESS, payload, meta: id })
-	}catch (e){
-		dispatch( {
-			type: GET_POST_ERROR,
-			payload: e,
-			error: true,
-			meta: id,
-		})
-		
-	}
-}
+export const getPost = createPromiseThunkById(GET_POST, postsApi.getPostsById)
 export const clearPost = () => ({ type: CLEAR_POST})
 
 //내일부터 다시 공부시작11111
@@ -36,35 +28,7 @@ const initialState = {
 
 
 const getPostsReducer = handleAsyncActions(GET_POSTS, "posts", true);
-const getPostReducer = (state, action) => {
-	const id = action.meta;
-	switch (action.type){
-		case GET_POST :
-			return {
-				...state,
-				post : {
-					...state.post,
-					[id]: reducerUtils.loading(state.post[id] && state.post[id].data),
-				}
-			}
-		case GET_POST_SUCCESS :
-			return {
-				...state,
-				post : {
-					...state.post,
-					[id]: reducerUtils.success(action.payload),
-				}
-			}
-		case GET_POST_ERROR :
-			return {
-				...state,
-				post : {
-					...state.post,
-					[id]: reducerUtils.error(action.payload),
-				}
-			}
-	}
-}
+const getPostReducer = handleAsyncActionsById(GET_POST, "post", true);
 
 
 export default function posts(state = initialState, action) {

@@ -73,7 +73,7 @@ export const handleAsyncActions = (type, key, keepData) => {
 		}
 	}
 }
-console.log('23332dasfasfd')
+console.log('23332dasfasfddf')
 export const handleAsyncActionsById = (type, key, keepData) => {
 	const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
 	return (state, action) => {

@@ -17,10 +17,12 @@ const GET_POST_ERROR = "GET_POST_ERROR";
 const CLEAR_POST = "CLEAR_POST";
 
 export const getPosts = createPromiseThunk(GET_POSTS, postsApi.getPosts);
-export const getPost = createPromiseThunkById(GET_POST, postsApi.getPostsById)
+export const getPost = createPromiseThunkById(GET_POST, postsApi.getPostsById);
+export const goToHome = () => (dispatch, getState, {history}) => {
+	history.push('/');
+}
 export const clearPost = () => ({ type: CLEAR_POST})
 
-//내일부터 다시 공부시작11111
 const initialState = {
 	posts: reducerUtils.initial(),
 	post: {}

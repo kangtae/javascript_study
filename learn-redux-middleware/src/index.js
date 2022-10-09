@@ -9,13 +9,16 @@ import rootReducer from "./modules";
 import logger from "redux-logger"
 import ReduxThunk from "redux-thunk"
 import {composeWithDevTools} from "redux-devtools-extension"
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter } from "react-router-dom";
+import { createBrowserHistory } from "history";
+
+const customHistory = createBrowserHistory();
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(ReduxThunk, logger)));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
+  <BrowserRouter history={customHistory}>
 		<Provider store={store}>
 			<App />
 		</Provider>

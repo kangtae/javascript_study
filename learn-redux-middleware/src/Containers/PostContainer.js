@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import { useSelector, useDispatch} from "react-redux";
 import Post from "../components/Post";
-import {clearPost, getPost} from "../modules/posts";
+import {clearPost, getPost, goToHome} from "../modules/posts";
 import {reducerUtils} from "../lib/asyncUtils";
 
 function PostContainer({postId}) {
@@ -14,12 +14,15 @@ function PostContainer({postId}) {
 			dispatch(clearPost());
 		}
 	},[postId, dispatch]);
-	console.log("data",data)
 	if(loading) return <div>로딩중...</div>;
 	if(error) return <div>에러 발생!</div>;
 	if(!data) return null;
 	return (
-		<Post post={data} />
+		<>
+			<button onClick={()=> dispatch(goToHome())}>홈으로 이동
+			</button>
+			<Post post={data} />
+		</>
 	);
 }
 

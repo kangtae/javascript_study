@@ -1,19 +1,17 @@
 const INCREASE = "INCREASE";
 const DECREASE = "DECREASE";
+const INCREASE_ASYNC = "INCREASE_ASYNC";
+const DECREASE_ASYNC = "DECREASE_ASYNC";
+import { delay, put } from "redux-saga/effects"
 
 export const increase = () => ({ type: INCREASE});
 export const decrease = () => ({ type: DECREASE});
 
-export const increaseAsync = () => (dispatch, getState) => {
-	setTimeout(()=>{
-		dispatch(increase());
-	},1000);
-}
+export const increaseAsync = () => ({type: INCREASE_ASYNC});
+export const decreaseAsync = () => ({type: DECREASE_ASYNC});
 
-export const decreaseAsync = () => dispatch => {
-	setTimeout(()=>{
-		dispatch(decrease());
-	},1000);
+function *increaseSaga() {
+
 }
 
 const initialState = 0;

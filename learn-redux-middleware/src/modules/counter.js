@@ -13,7 +13,7 @@ export const decreaseAsync = () => ({type: DECREASE_ASYNC});
 function *increaseSaga() {
 
 }
-console.log(12233332222)
+console.log(122333322243dgf2)
 const initialState = 0;
 
 export default function counter(state = initialState, action) {
